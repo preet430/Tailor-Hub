@@ -16,6 +16,8 @@ import { CustomizerComponent } from './customizer/customizer.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ShirtCustomizerComponent } from './shirt-customizer/shirt-customizer.component';
+import { ForgetPswComponent } from './forget-psw/forget-psw.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ShirtCustomizerComponent } from './shirt-customizer/shirt-customizer.co
     CustomizerComponent,
     RegisterComponent,
     LoginComponent,
-    ShirtCustomizerComponent
+    ShirtCustomizerComponent,
+    ForgetPswComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

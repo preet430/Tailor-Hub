@@ -10,6 +10,8 @@ import { CustomizerComponent } from './customizer/customizer.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ShirtCustomizerComponent } from './shirt-customizer/shirt-customizer.component';
+import { ForgetPswComponent } from './forget-psw/forget-psw.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path:'customizer',component:CustomizerComponent},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'shirtcustomizer',component:ShirtCustomizerComponent}
+  {path:'shirtcustomizer',component:ShirtCustomizerComponent},
+  {path:'forgetpsw',component:ForgetPswComponent},
+  {path:'cart',component:CartComponent}
 
 ];
 

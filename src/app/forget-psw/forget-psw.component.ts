@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forget-psw',
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forget-psw.component.css']
 })
 export class ForgetPswComponent implements OnInit {
+  angForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { 
+    this.createForm();
+
+  }
+
+  createForm() {
+    this.angForm = this.fb.group({
+      email: ['', [Validators.required,Validators.email ]]
+    });
+  }
 
   ngOnInit() {
   }

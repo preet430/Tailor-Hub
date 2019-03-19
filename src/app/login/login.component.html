@@ -4,39 +4,68 @@
 <article class="card-body mx-auto" style="max-width: 400px;">
   <h4 class="card-title mt-3 text-center" style="font-weight: 600;">Login</h4>
   
-  <form>
+  <form [formGroup]="angForm">
 
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-        <input name="" class="form-control" placeholder="Email address" type="email">
-    </div></div><!-- form-group// -->
+        <input name="" class="form-control" placeholder="Email address" type="email" formControlName="email" #email>
+    </div>
+    <div style="margin-top:5px;" *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+      <div *ngIf="angForm.controls['email'].errors.required">Email is required.</div>
+      <div *ngIf="angForm.controls['email'].errors.email">Enter valid email.</div>
+
+
+    </div>
+  </div>
+    
+    <!-- form-group// -->
 
     <div class="form-group input-group">
     	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+        
 		
-		<select style="width:350px;">
-			<option selected=""> User Type</option>
-			<option>Admin</option>
+		<select style="width:350px;" formControlName="userType" #userType>
+			<option selected value=""> User-Type</option>
+			<!-- <option>Admin</option> -->
 			<option>Tailor</option>
 			<option>User</option>
 		</select>
-  </div></div> <!-- form-group end.// -->
+  </div>
+  <div style="margin-top:5px;" *ngIf="angForm.controls['userType'].invalid && (angForm.controls['userType'].dirty || angForm.controls['userType'].touched)" class="alert alert-danger">
+    <div *ngIf="angForm.controls['userType'].errors.required">
+  Please select anyone.
+    </div>
+  </div>
+</div> <!-- form-group end.// -->
   
   <div class="form-group input-group">
     <div class="input-group-prepend">
       <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-      <input class="form-control" placeholder="Enter password" type="password">
-  </div></div><!-- form-group// -->
-
-  <div class="form-group">
-    <input type="checkbox"/><a href="#" class=" text-dark" style="font-size:100%;margin-left:10px;">Remamber me</a>
-    <a routerLink="/forgetpsw" style="font-size:100%;margin-left:150px;">Forget password?</a>
+      <input class="form-control" placeholder="Enter password" type="password" formControlName="password" #password>
   </div>
+  <div style="margin-top:5px;" *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+    <div *ngIf="angForm.controls['password'].errors.required">Password is required.</div>
+    <div *ngIf="angForm.controls['password'].errors.minlength">Password must be 6 character.</div>
+
+  </div>
+</div>
+  
+  <!-- form-group// -->
 
   <div class="form-group">
-    <button type="submit" class="btn btn-primary btn-block"> Sign In  </button>
+    <input type="checkbox" formControlName="chk" #chk><a href="#" class=" text-dark" style="font-size:100%;margin-left:10px;">Remamber me</a>
+    <a routerLink="/forgetpsw" style="font-size:100%;margin-left:150px;">Forget password?</a>
+    </div>
+
+  <!-- <div class="alert-danger" *ngIf="angForm.controls['chk'].invalid && angForm.controls['chk'].touched">
+      <div *ngIf="angForm.controls['chk'].errors.required">
+
+    allow terms&cond</div></div> -->
+
+  <div class="form-group">
+    <button type="submit" [disabled]="angForm.invalid" class="btn btn-primary btn-block" (click)="helo()"> Sign In  </button>
 </div> <!-- form-group// -->
 
 <p class="text-center" style="font-size:150%;">Not Have an account? <a routerLink="/register">Sign Up</a> </p>     
